@@ -1,9 +1,13 @@
 <div class="row mt-5">
     <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
+        <app-recipe-list (sendSelectedRecipe)="receiveSelectedRecipe($event)"></app-recipe-list>
     </div>
 
     <div class="col-md-7">
-        <app-recipe-detail></app-recipe-detail>
+        <app-recipe-detail [selectedRecipe]="selectedRecipe" *ngIf="selectedRecipe; else emptyDetail"></app-recipe-detail>
+
+        <ng-template #emptyDetail>
+            Select a recipe to display its details!
+        </ng-template>
     </div>
 </div>

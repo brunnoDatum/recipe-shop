@@ -21,4 +21,8 @@ export class ShoppingComponent implements OnInit {
     this.ingredients.push({ name: 'Tomato', quantity: 10 });
   }
 
+  public receiveNewIngredient(value: Ingredient): void {
+    this.ingredients.push(value);
+  }
+
 }

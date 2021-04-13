@@ -1,10 +1,11 @@
-<app-header></app-header>
+<app-header [showRecipes]="showRecipes" [showShopping]="showShopping" (sendMenuDisplay)="setDisplayContent($event)">
+</app-header>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <app-recipe></app-recipe>
-      <app-shopping></app-shopping>
+      <app-recipe *ngIf="showRecipes"></app-recipe>
+      <app-shopping *ngIf="showShopping"></app-shopping>
     </div>
   </div>
 </div>
