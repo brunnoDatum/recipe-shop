@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <img class="img-responsive max-img-height" alt="{{ selectedRecipe?.title }}" src="{{ selectedRecipe?.image }}">
+    <img class="img-responsive max-img-height" alt="{{ selectedRecipe?.name }}" src="{{ selectedRecipe?.imagePath }}">
   </div>
 </div>
 
 <div class="row mt-2">
   <div class="col-xs-12">
-    <h1>{{ selectedRecipe?.title }}</h1>
+    <h1>{{ selectedRecipe?.name }}</h1>
   </div>
 </div>
 
@@ -32,12 +32,12 @@
 
 <div class="row mt-3">
   <div class="col-xs-12">
-    <p>{{ selectedRecipe?.instructions }}</p>
+    <p>{{ selectedRecipe?.description }}</p>
   </div>
 </div>
 
 <div class="row mt-2">
-  <div class="col-xs-12" *ngFor="let ingr of selectedRecipe?.extendedIngredients">
-    <p>{{ ingr?.name }}</p>
+  <div class="col-xs-12">
+    <p>Ingredient</p>
   </div>
 </div>

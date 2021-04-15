@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Recipe } from '../../../model/recipe.model';
 import { RecipeService } from '../services/recipe.service';
 
@@ -10,10 +10,7 @@ import { RecipeService } from '../services/recipe.service';
 })
 export class RecipeListComponent implements OnInit, OnDestroy {
 
-  @Output()
-  public sendSelectedRecipe: EventEmitter<Recipe> = new EventEmitter<Recipe>();
-
-  public recipes: Recipe[];
+  public recipes$: Observable<Recipe[]>;
 
   private subscription: Subscription;
 
@@ -26,17 +23,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   private loadRecipes(): void {
-
-    this.subscription = this.recipeService.loadRandomRecipes().subscribe(response => {
-      this.recipes = response?.recipes ? response.recipes : [];
-    }, error => {
-
-    });
-
-  }
-
-  public receiveSelectedRecipe(value: Recipe): void {
-    this.sendSelectedRecipe.emit(value);
+    this.recipes$ = this.recipeService.getRecipes();
   }
 
   ngOnDestroy(): void {

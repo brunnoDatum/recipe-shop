@@ -1,7 +1,7 @@
-<a class="list-group-item d-flex justify-content-between align-items-start" (click)="selectRecipe()">
+<a class="list-group-item d-flex justify-content-between align-items-start" role="button" (click)="selectRecipe()">
   <div class="ms-2 me-auto">
-    <div class="fw-bold">{{ recipe?.title }}</div>
-    <span>{{ recipe?.sourceName }}</span>
+    <div class="fw-bold">{{ recipe?.name }}</div>
+    <span>{{ recipe?.description }}</span>
   </div>
-  <img class="img-responsive img-max-height" alt="{{ recipe?.title }}" src="{{ recipe?.image }}">
+  <img class="img-responsive img-max-height" alt="{{ recipe?.name }}" src="{{ recipe?.imagePath }}">
 </a>
