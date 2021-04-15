@@ -11,6 +11,8 @@ import { ShoppingEditComponent } from './features/shopping/shopping-edit/shoppin
 import { RecipeListComponent } from './features/recipe/recipe-list/recipe-list.component';
 import { FormsModule } from '@angular/forms';
 import { MenuDropdownDirective } from './shared/menu-dropdown.directive';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './helpers/header-interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,16 @@ import { MenuDropdownDirective } from './shared/menu-dropdown.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
