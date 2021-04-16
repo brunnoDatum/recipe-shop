@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Ingredient } from '../../model/ingredient.model';
+import { ShoppingService } from './services/shopping.service';
 
 @Component({
   selector: 'app-shopping',
@@ -8,21 +10,18 @@ import { Ingredient } from '../../model/ingredient.model';
 })
 export class ShoppingComponent implements OnInit {
 
-  public ingredients: Ingredient[] = [];
+  public ingredients$: Observable<Ingredient[]>;
 
-  constructor() { }
+  constructor(
+    private shoppingService: ShoppingService
+  ) { }
 
   ngOnInit(): void {
     this.loadIngredients();
   }
 
   private loadIngredients(): void {
-    this.ingredients.push({ name: 'Apple', quantity: 5 });
-    this.ingredients.push({ name: 'Tomato', quantity: 10 });
-  }
-
-  public receiveNewIngredient(value: Ingredient): void {
-    this.ingredients.push(value);
+    this.ingredients$ = this.shoppingService.getIngredients();
   }
 
 }
