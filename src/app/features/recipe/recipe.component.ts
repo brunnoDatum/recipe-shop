@@ -10,8 +10,6 @@ import { RecipeService } from './services/recipe.service';
 })
 export class RecipeComponent implements OnInit, OnDestroy {
 
-  public selectedRecipe: Recipe;
-
   private subscription: Subscription;
 
   constructor(
@@ -19,13 +17,6 @@ export class RecipeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.listenToSelectedRecipe();
-  }
-
-  private listenToSelectedRecipe(): void {
-    this.subscription = this.recipeService.onSelectRecipe.subscribe(value => {
-      this.selectedRecipe = value;
-    });
   }
 
   ngOnDestroy(): void {

@@ -10,9 +10,14 @@ import { ShoppingComponent } from './features/shopping/shopping.component';
 import { ShoppingEditComponent } from './features/shopping/shopping-edit/shopping-edit.component';
 import { RecipeListComponent } from './features/recipe/recipe-list/recipe-list.component';
 import { FormsModule } from '@angular/forms';
-import { MenuDropdownDirective } from './shared/menu-dropdown.directive';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './helpers/header-interceptor';
+import { RecipeEditComponent } from './features/recipe/recipe-edit/recipe-edit.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MenuDropdownDirective } from './shared/menu-dropdown/menu-dropdown.directive';
+import { RecipeEmptyComponent } from './features/recipe/recipe-empty/recipe-empty.component';
+import { RecipeCreateComponent } from './features/recipe/recipe-create/recipe-create.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +29,17 @@ import { HeaderInterceptor } from './helpers/header-interceptor';
     RecipeItemComponent,
     RecipeDetailComponent,
     RecipeListComponent,
-    MenuDropdownDirective
+    MenuDropdownDirective,
+    RecipeEditComponent,
+    NotFoundComponent,
+    RecipeEmptyComponent,
+    RecipeCreateComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     {

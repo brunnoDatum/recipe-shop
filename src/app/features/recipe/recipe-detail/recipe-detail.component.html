@@ -20,10 +20,10 @@
           <a class="dropdown-item" role="button" (click)="addIngredientsToList()">Add ingredients to shopping list</a>
         </li>
         <li>
-          <a href="#" class="dropdown-item">Edit recipe</a>
+          <a class="dropdown-item" [routerLink]="['/recipes', selectedRecipe?.id, 'edit']" >Edit recipe</a>
         </li>
         <li>
-          <a href="#" class="dropdown-item">Delete</a>
+          <a class="dropdown-item">Delete</a>
         </li>
       </ul>
     </div>
@@ -41,9 +41,10 @@
     <h3>Ingredients:</h3>
   </div>
 
-  <div class="col-xs-12" >
+  <div class="col-xs-12">
     <ul class="list-group clearfix">
-      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of selectedRecipe?.ingredients">
+      <li class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let item of selectedRecipe?.ingredients">
         {{ item?.name }} - {{ item?.quantity }}
       </li>
     </ul>
