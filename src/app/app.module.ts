@@ -9,7 +9,7 @@ import { HeaderComponent } from './features/header/header.component';
 import { ShoppingComponent } from './features/shopping/shopping.component';
 import { ShoppingEditComponent } from './features/shopping/shopping-edit/shopping-edit.component';
 import { RecipeListComponent } from './features/recipe/recipe-list/recipe-list.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './helpers/header-interceptor';
 import { RecipeEditComponent } from './features/recipe/recipe-edit/recipe-edit.component';
@@ -38,6 +38,7 @@ import { RecipeCreateComponent } from './features/recipe/recipe-create/recipe-cr
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule
   ],

@@ -6,3 +6,16 @@ body .dropdown-menu-end {
 body .active {
   background: #e6e6e6;
 }
+
+.form-control.ng-invalid.ng-touched,
+.form-control.ng-invalid.ng-dirty {
+  border-color: #dc3545;
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: #dc3545;
+}

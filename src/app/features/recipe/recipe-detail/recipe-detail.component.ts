@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Recipe } from '../../../model/recipe.model';
 import { ShoppingService } from '../../shopping/services/shopping.service';
 import { RecipeService } from '../services/recipe.service';
@@ -13,6 +14,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   public selectedRecipe: Recipe;
 
+  private subscription: Subscription;
+
   constructor(
     private actRoute: ActivatedRoute,
     private recipeService: RecipeService,
@@ -22,13 +25,15 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.actRoute.params.subscribe((params: Params) => {
-      this.loadRecipe(+params.id);
+      this.loadRecipe(params.id);
     });
 
   }
 
-  private loadRecipe(id: number): void {
-    this.selectedRecipe = this.recipeService.getRecipe(id);
+  private loadRecipe(id: string): void {
+    this.subscription = this.recipeService.getRecipe(id).subscribe(response => {
+      this.selectedRecipe = response;
+    });
   }
 
   public addIngredientsToList(): void {
@@ -36,6 +41,9 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }
